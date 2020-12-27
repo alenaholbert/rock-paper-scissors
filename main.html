@@ -48,7 +48,7 @@
       function game() {
           let playerWins = 0;
           let computerWins = 0;
-          for (i = 0; i < 5; i++) {
+          while (playerWins < 3 && computerWins < 3) {
               const playerSelection = prompt("Your turn: ");
               const computerSelection = computerPlay();
               let result = playRound(playerSelection, computerSelection);
@@ -60,14 +60,11 @@
               }
               console.log(result);
           }
-          if (playerWins > computerWins){
-              console.log("You won " + playerWins + " to " + computerWins);
-          }
-          else if (playerWins == computerWins) {
-              console.log("It's a tie with " + playerWins + " each!");
+          if (playerWins == 3){
+              console.log("You won! -- You:" + playerWins + " to Computer:" + computerWins);
           }
           else {
-              console.log("You lose :( " + playerWins + " to " + computerWins);
+              console.log("You lose :( -- You:" + playerWins + " to Computer:" + computerWins);
           }
       }
 
