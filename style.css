@@ -1,0 +1,33 @@
+body {
+    font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+    text-align: center;
+}
+
+button {
+    width: 100px;
+    height: 100px;
+    margin: 20px;
+    margin-top: 50px;
+    border-style: solid;
+    border-width: 1px;
+    border-color: lightgray;
+    background-size: 80%;
+}
+
+.rock {
+    background: url(images/rock.png) no-repeat;
+    background-size: 80%;
+    background-position: 50%;
+}
+
+.paper {
+    background: url(images/paper.png) no-repeat;
+    background-size: 80%;
+    background-position: 50%;
+}
+
+.scissors {
+    background: url(images/scissors.png) no-repeat;
+    background-size: 80%;
+    background-position: 50%;
+}

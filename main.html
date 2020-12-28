@@ -1,74 +1,19 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>Page Title</title>
+  <title>Rock Paper Scissors</title>
   <meta charset="UTF-8"/>
+  <link rel="stylesheet" href="style.css">
 </head>
 <body>
-  <script>
-      let choices = ["rock", "paper", "scissors"];
+    <h1>Rock Paper Scissors: You vs Computer</h1>
+    <h3>First one to 5 points wins!!</h3>
+    <h3>Play!</h3>
 
-      function playRound(playerSelection, computerSelection) {
-        playerSelection = playerSelection.trim().toLowerCase();
-        computerSelection = computerSelection.trim().toLowerCase();
-        if (playerSelection == computerSelection) {
-            return "It's a tie! You both played: " + playerSelection;
-        }
-        else if (playerSelection == "rock") {
-            if(computerSelection == "paper"){
-                return "You lose :( Paper beats rock.";
-            }
-            else if (computerSelection == "scissors"){
-                return "You win! Rock beats scissors.";
-            }
-        }
-        else if (playerSelection == "paper") {
-            if (computerSelection == "rock") {
-                return "You win! Paper beats rock.";
-            }
-            else if (computerSelection == "scissors") {
-                return "You lose :( Scissors beats paper.";
-            }
-        }
-        else if (playerSelection == "scissors") {
-            if (computerSelection == "rock") {
-                return "You lose :( Rock beats scissors.";
-            }
-            else if (computerSelection == "paper") {
-                return "You win! Scissors beats paper.";
-            }
-        }
-        return "Please enter a valid selection. " + playerSelection + " is not valid";
-      }
+    <button id="rock" class="button rock" data-button="rock"></button>
+    <button id="paper" class="button paper" data-button="paper"></button>
+    <button id="scissors" class="button scissors" data-button="scissors"></button>
 
-      function computerPlay() {
-        return choices[Math.floor(Math.random() * 3)];
-      }
-
-      function game() {
-          let playerWins = 0;
-          let computerWins = 0;
-          while (playerWins < 3 && computerWins < 3) {
-              const playerSelection = prompt("Your turn: ");
-              const computerSelection = computerPlay();
-              let result = playRound(playerSelection, computerSelection);
-              if (result.includes("win")){
-                  playerWins++;
-              }
-              else if (result.includes("lose")){
-                  computerWins++;
-              }
-              console.log(result);
-          }
-          if (playerWins == 3){
-              console.log("You won! -- You:" + playerWins + " to Computer:" + computerWins);
-          }
-          else {
-              console.log("You lose :( -- You:" + playerWins + " to Computer:" + computerWins);
-          }
-      }
-
-      game();
-  </script>
+    <script src="script.js"></script>
 </body>
 </html>
