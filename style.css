@@ -12,6 +12,7 @@ button {
     border-width: 1px;
     border-color: lightgray;
     background-size: 80%;
+    cursor: pointer;
 }
 
 .rock {
