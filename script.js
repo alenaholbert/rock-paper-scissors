@@ -6,6 +6,18 @@ rock.addEventListener('click', game);
 paper.addEventListener('click', game);
 scissors.addEventListener('click', game);
 
+const body = document.querySelector("#body");
+const log = document.createElement("div");
+const scoreKeeper = document.createElement("div");
+scoreKeeper.style.marginBottom = "30px";
+scoreKeeper.style.borderStyle = "solid";
+const computerPlay = document.createElement("div");
+computerPlay.style.marginBottom = "30px";
+computerPlay.style.color = "blue";
+body.appendChild(scoreKeeper);
+body.appendChild(computerPlay);
+body.appendChild(log);
+
 const choices = ["rock", "paper", "scissors"];
 playerWins = 0;
 computerWins = 0;
@@ -53,31 +65,56 @@ function endGame() {
     scissors.removeEventListener('click', game);
 
     if (playerWins == 5){
-        return "You won! -- You: " + playerWins + " to Computer: " + computerWins;
+        finalResult = "You won! -- You: " + playerWins + " to Computer: " + computerWins;
     }
-    return "You lose :( -- You: " + playerWins + " to Computer: " + computerWins;
+    else {
+        finalResult = "You lose :( -- You: " + playerWins + " to Computer: " + computerWins;
+    }
+    updateLog(finalResult);
 }
 
 function playAgain() {
-    playerWins = 0;
-    computerWins = 0;
-    rock.addEventListener('click', game);
-    paper.addEventListener('click', game);
-    scissors.addEventListener('click', game);
+    if (confirm(result + ". Would you like to play again?")) {
+        playerWins = 0;
+        computerWins = 0;
+        rock.addEventListener('click', game);
+        paper.addEventListener('click', game);
+        scissors.addEventListener('click', game);
+
+        while (log.lastElementChild) {
+            log.removeChild(log.lastElementChild);
+        }
+        updateScore();
+        computerPlay.textContent = "";
+    }
+}
+
+function updateScore() {
+    scoreKeeper.textContent = "You: " + playerWins + " vs Computer: " + computerWins;
+}
+
+function updateLog(result) {
+    const previousRounds = document.querySelectorAll("#prevRound");
+    previousRounds.forEach(round => round.style.color = 'lightgray');
+
+    const round = document.createElement('div');
+    round.id = "prevRound";
+    round.textContent = result;
+    log.prepend(round);
 }
 
 function game() {
-    console.log(playerWins);
-    console.log(computerWins);
-    if (playerWins == 5 || computerWins == 5) {
-        alert(endGame());
-        if (confirm("Would you like to play again?")) {
-            playAgain();
-        }
-        return;
-    }
     playerSelection = this.dataset.button;
     computerSelection = choices[Math.floor(Math.random() * 3)];
     result = playRound(playerSelection, computerSelection);
-    console.log(result);
+    computerPlay.textContent = "Computer played: " + computerSelection;
+
+    updateScore();
+
+    updateLog(result);
+    
+    if (playerWins == 5 || computerWins == 5) {
+        endGame();
+        playAgain();
+    }
 }

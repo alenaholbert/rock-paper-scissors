@@ -10,25 +10,30 @@ button {
     margin-top: 50px;
     border-style: solid;
     border-width: 1px;
+    border-radius: 10px;
     border-color: lightgray;
-    background-size: 80%;
     cursor: pointer;
+}
+
+button:hover {
+    border-color: gray;
+    border-width: 2px;
+    box-shadow: 10px;
 }
 
 .rock {
     background: url(images/rock.png) no-repeat;
-    background-size: 80%;
-    background-position: 50%;
 }
 
 .paper {
     background: url(images/paper.png) no-repeat;
-    background-size: 80%;
-    background-position: 50%;
 }
 
 .scissors {
     background: url(images/scissors.png) no-repeat;
+}
+
+.button {
     background-size: 80%;
     background-position: 50%;
 }
