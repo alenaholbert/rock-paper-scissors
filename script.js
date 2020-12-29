@@ -71,9 +71,10 @@ function endGame() {
         finalResult = "You lose :( -- You: " + playerWins + " to Computer: " + computerWins;
     }
     updateLog(finalResult);
+    return finalResult;
 }
 
-function playAgain() {
+function playAgain(result) {
     if (confirm(result + ". Would you like to play again?")) {
         playerWins = 0;
         computerWins = 0;
@@ -114,7 +115,7 @@ function game() {
     updateLog(result);
     
     if (playerWins == 5 || computerWins == 5) {
-        endGame();
-        playAgain();
+        finalResult = endGame();
+        playAgain(finalResult);
     }
 }
